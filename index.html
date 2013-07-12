@@ -16,7 +16,7 @@
     var stage = new PIXI.Stage(0x66FF99);
 
     // create a renderer instance
-    var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight);
+    var renderer = PIXI.autoDetectRenderer(256, 224);
 
     // add the renderer view element to the DOM
     document.body.appendChild(renderer.view);
@@ -33,8 +33,8 @@
     bunny.anchor.y = 0.5;
 
     // move the sprite t the center of the screen
-    bunny.position.x = window.innerWidth/2;
-    bunny.position.y = window.innerHeight/2;
+    bunny.position.x = 256/2;
+    bunny.position.y = 224/2;
 
     stage.addChild(bunny);
 
