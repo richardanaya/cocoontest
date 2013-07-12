@@ -12,11 +12,34 @@
 </head>
 <body bgcolor="black">
 <script>
+    var width = 256;
+    var height = 224;
     // create an new instance of a pixi stage
     var stage = new PIXI.Stage(0x66FF99);
+    var t1 = PIXI.mat3.create();
+    t1[2] = -window.innerWidth/2;
+    t1[5] = -window.innerHeight/2;
+    var s1 = PIXI.mat3.create();
+    var w = width*(window.innerHeight/height);
+    var h = height*(window.innerWidth/width);
+    if( (window.innerWidth >= window.innerHeight) || h > window.innerHeight){
+        s1[0] = window.innerHeight/height;
+        s1[4] = window.innerHeight/height;
+    }
+    if(window.innerWidth < window.innerHeight  || w > window.innerWidth){
+        s1[0] = window.innerWidth/width;
+        s1[4] = window.innerWidth/width;
+    }
+
+    var t2 = PIXI.mat3.create();
+    t2[2] = window.innerWidth/2;
+    t2[5] = window.innerHeight/2;
+    var scaleAroundPoint = PIXI.mat3.multiply(t1,PIXI.mat3.multiply(s1,t2));
+    PIXI.mat3.multiply(stage.worldTransform,scaleAroundPoint);
+
 
     // create a renderer instance
-    var renderer = PIXI.autoDetectRenderer(256, 224);
+    var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight);
 
     // add the renderer view element to the DOM
     document.body.appendChild(renderer.view);
@@ -33,8 +56,8 @@
     bunny.anchor.y = 0.5;
 
     // move the sprite t the center of the screen
-    bunny.position.x = 256/2;
-    bunny.position.y = 224/2;
+    bunny.position.x = window.innerWidth/2;
+    bunny.position.y = window.innerHeight/2;
 
     stage.addChild(bunny);
 
