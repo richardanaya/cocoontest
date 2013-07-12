@@ -1,8 +1,14 @@
 <html>
-<body>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <style type="text/css">body { margin: 0px; }</style> <!-- Android fix -->
+</head>
+<body bgcolor="black">
 <canvas id="screen" width="640" height"480"></canvas>
 <script>
 var d = document.getElementById('screen');
+d.width = window.innerWidth;
+d.height = window.innerHeight;
 var ctx = d.getContext('2d');
 ctx.fillStyle = 'red';
 ctx.fillRect(0,0,50,50);
