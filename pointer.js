@@ -199,8 +199,15 @@
                 timeStamp: Date.now(),
                 type: gesture
             };
-            //Hammer.DOCUMENT.createEvent('Event');
-            //event.initEvent(gesture, true, true);
+
+            try {
+                event = Hammer.DOCUMENT.createEvent('Event');
+                event.initEvent(gesture, true, true);
+            }
+            catch(e){
+
+            }
+
             event.gesture = eventData;
 
             // trigger on the target if it is in the instance element,

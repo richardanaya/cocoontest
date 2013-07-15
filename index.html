@@ -45,9 +45,12 @@
 
     // add the renderer view element to the DOM
     document.body.appendChild(renderer.view);
-    Hammer(renderer.view).on("tap", function(e) {
+    Hammer(renderer.view).on("touch", function(e) {
         direction *= -1;
-        console.log("tapped!");
+    });
+
+    Hammer(renderer.view).on("release", function(e) {
+        direction *= -1;
     });
 
     requestAnimFrame( animate );
