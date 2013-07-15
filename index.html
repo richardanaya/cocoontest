@@ -47,6 +47,7 @@
     document.body.appendChild(renderer.view);
     Hammer(renderer.view).on("tap", function(e) {
         direction *= -1;
+        console.log("tapped!");
     });
 
     requestAnimFrame( animate );
