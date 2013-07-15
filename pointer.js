@@ -184,7 +184,7 @@
          */
         trigger: function triggerEvent(gesture, eventData){
             // create DOM event
-            var event =
+            var event = null;
             try {
                 event = Hammer.DOCUMENT.createEvent('Event');
                 event.initEvent(gesture, true, true);
