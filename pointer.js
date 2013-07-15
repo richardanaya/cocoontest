@@ -185,11 +185,13 @@
         trigger: function triggerEvent(gesture, eventData){
             // create DOM event
             var event = null;
-            try {
-                event = Hammer.DOCUMENT.createEvent('Event');
+
+
+            event = Hammer.DOCUMENT.createEvent('MouseEvent');
+            if(event.initEvent){
                 event.initEvent(gesture, true, true);
             }
-            catch(e){
+            else {
                 event = {
                     bubbles: true,
                     cancelBubble: false,
@@ -205,8 +207,9 @@
                     timeStamp: Date.now(),
                     type: gesture
                 };
-
             }
+
+
             console.log(gesture);
             event.gesture = eventData;
 
