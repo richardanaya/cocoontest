@@ -8,12 +8,12 @@
             background-color: #000000;
         }
     </style>
-    <script src="hammer.js"></script>
+    <script src="pointer.js"></script>
     <script src="pixi.js"></script>
 </head>
 <body bgcolor="black">
 <script>
-    var dir = 1;
+    var direction = 1;
     var width = 256;
     var height = 224;
     // create an new instance of a pixi stage
@@ -45,12 +45,16 @@
 
     // add the renderer view element to the DOM
     document.body.appendChild(renderer.view);
+    renderer.view.addEventListener('pointerdown', function(e) {
+        direction *= -1;
+    });
 
-    Hammer(renderer.view).on("swipeleft", function() {
-        dir *= -1;
+    renderer.view.addEventListener('pointerup', function(e) {
+        direction *= -1;
     });
 
     requestAnimFrame( animate );
+
 
     // create a texture from an image path
     var texture = PIXI.Texture.fromImage("bunny.png");
@@ -72,7 +76,7 @@
         requestAnimFrame( animate );
 
         // just for fun, lets rotate mr rabbit a little
-        bunny.rotation += 0.1*dir;
+        bunny.rotation += direction*0.1;
 
         // render the stage
         renderer.render(stage);
