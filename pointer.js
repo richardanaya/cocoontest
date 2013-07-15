@@ -186,17 +186,10 @@
             // create DOM event
             var event = Hammer.DOCUMENT.createEvent('MouseEvent');
 
-            try {
-                if(event.initEvent) {
-                    event.initEvent(gesture, true, true);
-                }
-            }
-            catch(e){
-                event.timeStamp = Date.now();
-                event.cancelable = true;
-                event.bubbles = true;
-                event.type = gesture;
-            }
+            event.timeStamp = Date.now();
+            event.cancelable = true;
+            event.bubbles = true;
+            event.type = gesture;
 
             console.log(gesture);
 
