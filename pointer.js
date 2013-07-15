@@ -184,28 +184,27 @@
          */
         trigger: function triggerEvent(gesture, eventData){
             // create DOM event
-            var event = {
-                bubbles: true,
-                cancelBubble: false,
-                cancelable: true,
-                clipboardData: undefined,
-                currentTarget: null,
-                defaultPrevented: false,
-                eventPhase: 0,
-                gesture: Object,
-                returnValue: true,
-                srcElement: null,
-                target: null,
-                timeStamp: Date.now(),
-                type: gesture
-            };
-
+            var event =  null;
             try {
                 event = Hammer.DOCUMENT.createEvent('Event');
                 event.initEvent(gesture, true, true);
             }
             catch(e){
-
+                event = {
+                    bubbles: true,
+                        cancelBubble: false,
+                    cancelable: true,
+                    clipboardData: undefined,
+                    currentTarget: null,
+                    defaultPrevented: false,
+                    eventPhase: 0,
+                    gesture: Object,
+                    returnValue: true,
+                    srcElement: null,
+                    target: null,
+                    timeStamp: Date.now(),
+                    type: gesture
+                };
             }
 
             event.gesture = eventData;
