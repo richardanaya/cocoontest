@@ -191,9 +191,9 @@
             }
             catch(e){
                 event = {
-                    bubbles: false,
+                    bubbles: true,
                     cancelBubble: false,
-                    cancelable: false,
+                    cancelable: true,
                     clipboardData: undefined,
                     currentTarget: null,
                     defaultPrevented: false,
