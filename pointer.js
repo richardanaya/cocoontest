@@ -184,8 +184,23 @@
          */
         trigger: function triggerEvent(gesture, eventData){
             // create DOM event
-            var event = Hammer.DOCUMENT.createEvent('Event');
-            event.initEvent(gesture, true, true);
+            var event = {
+                bubbles: true,
+                cancelBubble: false,
+                cancelable: true,
+                clipboardData: undefined,
+                currentTarget: null,
+                defaultPrevented: false,
+                eventPhase: 0,
+                gesture: Object,
+                returnValue: true,
+                srcElement: null,
+                target: null,
+                timeStamp: Date.now(),
+                type: gesture
+            };
+            //Hammer.DOCUMENT.createEvent('Event');
+            //event.initEvent(gesture, true, true);
             event.gesture = eventData;
 
             // trigger on the target if it is in the instance element,
