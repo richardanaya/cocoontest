@@ -45,11 +45,7 @@
 
     // add the renderer view element to the DOM
     document.body.appendChild(renderer.view);
-    renderer.view.addEventListener('pointerdown', function(e) {
-        direction *= -1;
-    });
-
-    renderer.view.addEventListener('pointerup', function(e) {
+    Hammer(renderer.view).on("tap", function(e) {
         direction *= -1;
     });
 
