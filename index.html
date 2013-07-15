@@ -45,11 +45,11 @@
 
     // add the renderer view element to the DOM
     document.body.appendChild(renderer.view);
-    Hammer(renderer.view).on("touch", function(e) {
+    renderer.view.addEventListener("touchstart", function(e) {
         direction *= -1;
     });
 
-    Hammer(renderer.view).on("release", function(e) {
+    renderer.view.addEventListener("touchend", function(e) {
         direction *= -1;
     });
 
