@@ -186,7 +186,7 @@
             // create DOM event
             var event =  null;
             try {
-                event = Hammer.DOCUMENT.createEvent('Event');
+                event = Hammer.DOCUMENT.createEvent('MouseEvent');
                 event.initEvent(gesture, true, true);
             }
             catch(e){
